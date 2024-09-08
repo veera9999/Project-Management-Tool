@@ -25,18 +25,12 @@ nav {
   justify-content: center;
 }
 
-nav img {
-  width: 0.25rem;
-  height: 0.25rem;
-  flex: 1;
-  border-radius: 50%;
-}
-
 nav h1 {
-  flex: 1;
-  font-size: 1.5rem;
+  flex: 2;
+  font-size: 2rem;
   color: #ecf0f1;
   margin: 0;
+  text-align: center;
 }
 .logout-button {
   flex: 1;

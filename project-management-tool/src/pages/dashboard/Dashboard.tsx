@@ -5,16 +5,11 @@ import CreateProject from "../../components/project/CreateProject";
 import CreateTask from "../../components/task/CreateTask";
 import Logout from "../../components/authorization/Logout";
 import { fetchProjects, createProject } from "../../redux/slices/projectSlice";
-import {
-  fetchTasks,
-  deleteTask,
-  createTask,
-} from "../../redux/slices/taskSlice";
+import { fetchTasks, createTask } from "../../redux/slices/taskSlice";
 import ProjectItem from "../../components/project/ProjectItem";
 import TaskItem from "../../components/task/TaskItem";
 import "./Dashboard.css";
 import taskninja from "./taskninja.png";
-import { format } from "date-fns";
 
 const Dashboard: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -23,7 +18,6 @@ const Dashboard: React.FC = () => {
   const [selectedProjectId, setSelectedProjectId] = useState<string | null>(
     null
   );
-  const [selectedTaskId, setSelectedTaskId] = useState("");
   const [showProjectForm, setShowProjectForm] = useState(false);
   const [showTaskForm, setShowTaskForm] = useState(false);
   const [newProjectTitle, setNewProjectTitle] = useState("");
@@ -94,7 +88,6 @@ const Dashboard: React.FC = () => {
   return (
     <div className="dashboard-wrapper">
       <nav className="navbar">
-        <img src={taskninja} alt="taskninja" />
         <h1>Dashboard</h1>
         <Logout />
       </nav>
