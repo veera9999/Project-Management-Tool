@@ -1,20 +1,29 @@
 import React from "react";
+import { useState } from "react";
+import { useAppDispatch } from "../../redux/store/store";
+import { createProject } from "../../redux/slices/projectSlice";
 
 interface CreateProjectProps {
-  newProjectTitle: string;
-  setNewProjectTitle: React.Dispatch<React.SetStateAction<string>>;
-  newProjectDescription: string;
-  setNewProjectDescription: React.Dispatch<React.SetStateAction<string>>;
-  handleCreateProject: () => void;
+  setShowProjectForm: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 const CreateProject: React.FC<CreateProjectProps> = ({
-  newProjectTitle,
-  setNewProjectTitle,
-  newProjectDescription,
-  setNewProjectDescription,
-  handleCreateProject,
+  setShowProjectForm,
 }) => {
+  const [newProjectTitle, setNewProjectTitle] = useState("");
+  const [newProjectDescription, setNewProjectDescription] = useState("");
+  const dispatch = useAppDispatch();
+  const handleCreateProject = () => {
+    dispatch(
+      createProject({
+        title: newProjectTitle,
+        description: newProjectDescription,
+      })
+    );
+    setNewProjectTitle("");
+    setNewProjectDescription("");
+    setShowProjectForm(false);
+  };
   return (
     <div className="dialog">
       <div className="dialog-content">

@@ -1,0 +1,10 @@
+.task-selector-attr {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+.task-attr {
+  display: flex;
+  gap: 0.5rem;
+}
