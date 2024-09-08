@@ -11,10 +11,10 @@ import { authMiddleware } from "../middleware/authMiddleware";
 const router = express.Router();
 router.use(authMiddleware);
 
-router.post("/", createProject);
-router.get("/", getProjects);
-router.get("/:id", getProjectById);
-router.put("/:id", updateProject);
-router.delete("/:id", deleteProject);
+router.post("/createProject", createProject);
+router.get("/getProjects", getProjects);
+router.get("/getProjectById/:id", getProjectById);
+router.patch("/updateProject/:id", updateProject);
+router.delete("/deleteProject/:id", deleteProject);
 
 export default router;

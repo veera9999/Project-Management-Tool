@@ -1,38 +1,4 @@
-body {
-  font-family: Arial, sans-serif;
+* {
   margin: 0;
   padding: 0;
-  background-color: #f4f4f4;
-}
-
-h1,
-h2 {
-  color: #333;
-}
-
-a {
-  text-decoration: none;
-  color: #007bff;
-}
-
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-li {
-  padding: 10px;
-  border-bottom: 1px solid #ddd;
-}
-
-.dashboard,
-.project-page {
-  padding: 20px;
-}
-
-.dashboard ul,
-.project-page ul {
-  background-color: #fff;
-  border-radius: 5px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }

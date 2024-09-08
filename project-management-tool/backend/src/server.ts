@@ -4,12 +4,8 @@ import mongoose from "mongoose";
 const PORT = process.env.PORT || 5000;
 const MONGO_URI = process.env.MONGO_URI || "";
 
-// Connect to MongoDB
 mongoose
-  .connect(MONGO_URI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  } as mongoose.ConnectOptions)
+  .connect(MONGO_URI, { serverSelectionTimeoutMS: 5000 })
   .then(() => {
     console.log("Connected to MongoDB");
     // Start the server after successful connection

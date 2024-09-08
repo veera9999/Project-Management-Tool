@@ -1,0 +1,23 @@
+body,
+html {
+  background-color: aliceblue;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.welcome {
+  margin-top: 10rem;
+  text-align: center;
+  font-size: xx-large;
+}
+.nav-buttons {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+}
+.nav-link {
+  background-color: black;
+  box-sizing: border-box;
+  padding: 0.5rem;
+  border-radius: 1rem;
+  color: white;
+}

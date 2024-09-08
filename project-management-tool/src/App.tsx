@@ -2,8 +2,11 @@ import React from "react";
 import { Provider } from "react-redux";
 import store from "./redux/store/store";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import Dashboard from "./pages/Dashboard";
-import ProjectPage from "./pages/ProjectPage";
+import Welcome from "./pages/welcome/Welcome";
+import Dashboard from "./pages/dashboard/Dashboard";
+import Login from "./pages/authorization/Login";
+import Register from "./pages/authorization/Register";
+import PrivateRoute from "./components/authorization/PrivateRoute";
 import "./App.css";
 
 const App: React.FC = () => {
@@ -11,8 +14,17 @@ const App: React.FC = () => {
     <Provider store={store}>
       <Router>
         <Routes>
-          <Route path="/" element={<Dashboard />} />
-          <Route path="/projects/:id" element={<ProjectPage />} />
+          <Route path="/" element={<Welcome />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route
+            path="/dashboard"
+            element={
+              <PrivateRoute>
+                <Dashboard />
+              </PrivateRoute>
+            }
+          />
         </Routes>
       </Router>
     </Provider>

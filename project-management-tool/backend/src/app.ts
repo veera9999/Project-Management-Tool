@@ -1,7 +1,6 @@
 import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
-import mongoose from "mongoose";
 import authRoutes from "./routes/authRoutes";
 import projectRoutes from "./routes/projectRoutes";
 import taskRoutes from "./routes/taskRoutes";
@@ -14,7 +13,9 @@ const app = express();
 // Middleware
 app.use(cors());
 app.use(express.json());
-
+app.get("/", (req, res) => {
+  res.send("Welcome to the Project Management Tool API");
+});
 // Routes
 app.use("/api/auth", authRoutes);
 app.use("/api/projects", authMiddleware, projectRoutes);
