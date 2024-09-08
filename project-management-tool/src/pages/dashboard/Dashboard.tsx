@@ -3,13 +3,13 @@ import { useSelector } from "react-redux";
 import { RootState, useAppDispatch } from "../../redux/store/store";
 import CreateProject from "../../components/project/CreateProject";
 import CreateTask from "../../components/task/CreateTask";
+// import UpdateTask from "../../components/task/UpdateTask";
 import Logout from "../../components/authorization/Logout";
-import { fetchProjects, createProject } from "../../redux/slices/projectSlice";
-import { fetchTasks, createTask } from "../../redux/slices/taskSlice";
+import { fetchProjects } from "../../redux/slices/projectSlice";
+import { fetchTasks } from "../../redux/slices/taskSlice";
 import ProjectItem from "../../components/project/ProjectItem";
 import TaskItem from "../../components/task/TaskItem";
 import "./Dashboard.css";
-import taskninja from "./taskninja.png";
 
 const Dashboard: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -20,12 +20,7 @@ const Dashboard: React.FC = () => {
   );
   const [showProjectForm, setShowProjectForm] = useState(false);
   const [showTaskForm, setShowTaskForm] = useState(false);
-  const [newProjectTitle, setNewProjectTitle] = useState("");
-  const [newProjectDescription, setNewProjectDescription] = useState("");
-  const [newTaskTitle, setNewTaskTitle] = useState("");
-  const [newTaskDescription, setNewTaskDescription] = useState("");
-  const [newTaskDueDate, setNewTaskDueDate] = useState<Date | null>(null);
-
+  // const [showUpdateTaskForm, setShowUpdateTaskForm] = useState(false);
   useEffect(() => {
     dispatch(fetchProjects());
   }, [dispatch]);
@@ -36,53 +31,13 @@ const Dashboard: React.FC = () => {
     }
   }, [dispatch, selectedProjectId]);
 
-  const handleCreateProject = () => {
-    dispatch(
-      createProject({
-        title: newProjectTitle,
-        description: newProjectDescription,
-      })
-    );
-    setNewProjectTitle("");
-    setNewProjectDescription("");
-    setShowProjectForm(false);
-  };
-
-  const handleCreateTask = () => {
-    if (selectedProjectId) {
-      dispatch(
-        createTask({
-          title: newTaskTitle,
-          description: newTaskDescription,
-          dueDate: newTaskDueDate ? newTaskDueDate.toISOString() : null,
-          priority: "Medium",
-          status: "pending",
-          projectId: selectedProjectId,
-        })
-      );
-      setNewTaskTitle("");
-      setNewTaskDescription("");
-      setNewTaskDueDate(null);
-      setShowTaskForm(false);
-    }
-  };
-
   const projectProps = {
-    newProjectTitle,
-    setNewProjectTitle,
-    newProjectDescription,
-    setNewProjectDescription,
-    handleCreateProject,
+    setShowProjectForm,
   };
 
   const taskProps = {
-    newTaskTitle,
-    setNewTaskTitle,
-    newTaskDescription,
-    setNewTaskDescription,
-    newTaskDueDate,
-    setNewTaskDueDate,
-    handleCreateTask,
+    selectedProjectId,
+    setShowTaskForm,
   };
 
   return (

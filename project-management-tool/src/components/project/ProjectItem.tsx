@@ -17,8 +17,6 @@ const ProjectItem: React.FC<ProjectItemProps> = ({
 
   const handleStatusChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const newStatus = event.target.value;
-
-    // Dispatch the updateProject action with the new status
     dispatch(
       updateProject({
         id: project._id,

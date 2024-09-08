@@ -29,7 +29,7 @@ export const updateTask = createAsyncThunk(
     id: string;
     title: string;
     description: string;
-    dueDate: string;
+    dueDate: string | null;
     priority: string;
     status: string;
   }) => {

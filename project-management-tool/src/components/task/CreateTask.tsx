@@ -1,25 +1,40 @@
 import React from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import { useAppDispatch } from "../../redux/store/store";
+import { createTask } from "../../redux/slices/taskSlice";
+import { useState } from "react";
 interface CreateTaskProps {
-  newTaskTitle: string;
-  setNewTaskTitle: React.Dispatch<React.SetStateAction<string>>;
-  newTaskDescription: string;
-  setNewTaskDescription: React.Dispatch<React.SetStateAction<string>>;
-  newTaskDueDate: Date | null;
-  setNewTaskDueDate: React.Dispatch<React.SetStateAction<Date | null>>;
-  handleCreateTask: () => void;
+  selectedProjectId: string | null;
+  setShowTaskForm: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const CreateProject: React.FC<CreateTaskProps> = ({
-  newTaskTitle,
-  setNewTaskTitle,
-  newTaskDescription,
-  setNewTaskDescription,
-  newTaskDueDate,
-  setNewTaskDueDate,
-  handleCreateTask,
+const CreateTask: React.FC<CreateTaskProps> = ({
+  selectedProjectId,
+  setShowTaskForm,
 }) => {
+  const [newTaskTitle, setNewTaskTitle] = useState("");
+  const [newTaskDescription, setNewTaskDescription] = useState("");
+  const [newTaskDueDate, setNewTaskDueDate] = useState<Date | null>(null);
+  const dispatch = useAppDispatch();
+  const handleCreateTask = () => {
+    if (selectedProjectId) {
+      dispatch(
+        createTask({
+          title: newTaskTitle,
+          description: newTaskDescription,
+          dueDate: newTaskDueDate ? newTaskDueDate.toISOString() : null,
+          priority: "Medium",
+          status: "pending",
+          projectId: selectedProjectId,
+        })
+      );
+      setNewTaskTitle("");
+      setNewTaskDescription("");
+      setNewTaskDueDate(null);
+      setShowTaskForm(false);
+    }
+  };
   return (
     <div className="dialog">
       <div className="dialog-content">
@@ -45,4 +60,4 @@ const CreateProject: React.FC<CreateTaskProps> = ({
   );
 };
 
-export default CreateProject;
+export default CreateTask;
