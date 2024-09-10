@@ -42,6 +42,7 @@ const UpdateTask: React.FC<taskProperties> = ({
   return (
     <div className="dialog">
       <div className="dialog-content">
+        <h3>Update Task</h3>
         <label htmlFor="input">Title</label>
         <input
           type="text"

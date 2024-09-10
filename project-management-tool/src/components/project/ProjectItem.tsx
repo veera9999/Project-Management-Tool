@@ -1,8 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import { Project } from "../../redux/slices/projectSlice"; // Import Project type if it's exported
 import { useAppDispatch } from "../../redux/store/store";
 import { updateProject, deleteProject } from "../../redux/slices/projectSlice";
-
+import UpdateProject from "./UpdateProjectForm";
 // Define the prop types for the component
 interface ProjectItemProps {
   project: Project;
@@ -14,7 +14,7 @@ const ProjectItem: React.FC<ProjectItemProps> = ({
   setSelectedProjectId,
 }) => {
   const dispatch = useAppDispatch();
-
+  const [showUpdateProjectForm, setShowUpdateProjectForm] = useState(false);
   const handleStatusChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const newStatus = event.target.value;
     dispatch(
@@ -27,20 +27,29 @@ const ProjectItem: React.FC<ProjectItemProps> = ({
     );
   };
 
+  const projectProps = { project, setShowUpdateProjectForm };
   return (
-    <li key={project._id} onClick={() => setSelectedProjectId(project._id)}>
-      {project.title}
-      <select
-        className="project-status"
-        value={project.status}
-        onChange={handleStatusChange}>
-        <option value="active">Active</option>
-        <option value="finished">Finished</option>
-      </select>
-      <button onClick={() => dispatch(deleteProject(project._id))}>
-        Delete
-      </button>
-    </li>
+    <div>
+      <li
+        key={project._id}
+        onClick={() => {
+          setSelectedProjectId(project._id);
+          // setShowUpdateProjectForm(true);
+        }}>
+        {project.title}
+        <select
+          className="project-status"
+          value={project.status}
+          onChange={handleStatusChange}>
+          <option value="active">Active</option>
+          <option value="finished">Finished</option>
+        </select>
+        <button onClick={() => dispatch(deleteProject(project._id))}>
+          Delete
+        </button>
+      </li>
+      {showUpdateProjectForm && <UpdateProject {...projectProps} />}
+    </div>
   );
 };
 
