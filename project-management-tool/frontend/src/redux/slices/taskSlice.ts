@@ -53,6 +53,7 @@ export interface Task {
   dueDate: string;
   priority: string;
   status: string;
+  projectId: string;
 }
 
 interface TaskState {
