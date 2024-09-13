@@ -33,7 +33,7 @@ const ContentWrapper = styled.div`
 `;
 
 const Title = styled.h1`
-  font-family: "Noto Sans JP", sans-serif; /* Ninja-style font */
+  font-family: "Noto Sans JP", sans-serif;
   font-size: 3.5rem;
   margin-bottom: 1rem;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
@@ -84,7 +84,7 @@ const FeatureIcon = styled.i`
 `;
 
 const Welcome: React.FC = () => {
-  const shapes = Array.from({ length: 15 }, (_) => ({
+  const shapes = Array.from({ length: 15 }, () => ({
     size: Math.random() * 80 + 20,
     x: Math.random() * 100,
     y: Math.random() * 100,
