@@ -2,7 +2,8 @@ import app from "./app";
 import mongoose from "mongoose";
 
 const PORT = process.env.PORT || 5000;
-const MONGO_URI = process.env.MONGO_URI || "";
+const MONGO_URI =
+  "mongodb+srv://veerapalla919:Veera800@project-management-tool.pvaoa.mongodb.net/pmt?retryWrites=true&w=majority&appName=project-management-tool";
 
 mongoose
   .connect(MONGO_URI, { serverSelectionTimeoutMS: 5000 })
