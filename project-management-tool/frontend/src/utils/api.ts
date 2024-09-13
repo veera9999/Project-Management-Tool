@@ -3,7 +3,7 @@ import store from "../redux/store/store";
 import { logoutUser } from "../redux/slices/userSlice";
 
 const api = axios.create({
-  baseURL: "http://localhost:5000/api", // Adjust this to your backend URL
+  baseURL: "https://project-management-tool-backend-u45t.onrender.com", // Adjust this to your backend URL
 });
 
 api.interceptors.request.use(
