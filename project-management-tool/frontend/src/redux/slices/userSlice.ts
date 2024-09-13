@@ -27,8 +27,10 @@ export const logoutUser = createAsyncThunk("user/logout", async () => {
 export const loginUser = createAsyncThunk(
   "user/loginUser",
   async (credentials: { email: string; password: string }) => {
+    console.log("login user form userslice accessed");
     const response = await api.post("/auth/login", credentials);
     localStorage.setItem("token", response.data.token);
+    console.log(response.data);
     return response.data;
   }
 );
