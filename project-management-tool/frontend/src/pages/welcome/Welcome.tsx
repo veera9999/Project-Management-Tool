@@ -84,7 +84,7 @@ const FeatureIcon = styled.i`
 `;
 
 const Welcome: React.FC = () => {
-  const shapes = Array.from({ length: 15 }, (_, i) => ({
+  const shapes = Array.from({ length: 15 }, (_) => ({
     size: Math.random() * 80 + 20,
     x: Math.random() * 100,
     y: Math.random() * 100,
