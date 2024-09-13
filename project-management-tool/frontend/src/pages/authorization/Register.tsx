@@ -103,7 +103,7 @@ const Register: React.FC = () => {
     }
   };
 
-  const shapes = Array.from({ length: 10 }, (_, i) => ({
+  const shapes = Array.from({ length: 15 }, () => ({
     size: Math.random() * 80 + 20,
     x: Math.random() * 100,
     y: Math.random() * 100,
