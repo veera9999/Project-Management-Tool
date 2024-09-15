@@ -2,6 +2,7 @@
   "name": "project-management-tool",
   "private": true,
   "version": "0.0.0",
+  "homepage": ".",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -20,7 +21,9 @@
     "axios": "^1.7.7",
     "date-fns": "^3.6.0",
     "framer-motion": "^11.5.4",
+    "fs": "^0.0.1-security",
     "gsap": "^3.12.5",
+    "path": "^0.12.7",
     "react": "^18.3.1",
     "react-datepicker": "^7.3.0",
     "react-dom": "^18.3.1",
