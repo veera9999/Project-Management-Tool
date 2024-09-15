@@ -95,8 +95,10 @@ const Login: React.FC = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    console.log("handlesubmit for login clicked");
     const result = await dispatch(loginUser({ email, password }));
     if (loginUser.fulfilled.match(result)) {
+      console.log("login user fulfilled");
       navigate("/dashboard");
     }
   };
